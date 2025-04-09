@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 220px;
+            height: 100%;
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        .main {
+            margin-left: 240px;
+            padding: 40px;
+        }
+
+        .main h1 {
+            margin-bottom: 30px;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            flex: 1 1 250px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .logout-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 80%;
+            background-color: #dc3545;
+            border: none;
+            padding: 12px;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar d-none d-md-block">
+    <h2><i class="fas fa-cogs"></i> Admin Panel</h2>
+    <a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-chart-line me-2"></i> Dashboard</a>
+    <a href="/admin/complaints"><i class="fas fa-folder-open me-2"></i> View Complaints</a>
+    <form method="POST" action="/admin/logout">
+        <button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
+    </form>
+</div>
+
+<div class="main">
+    <h1><i class="fas fa-user-shield me-2"></i> Welcome, Admin</h1>
+
+    <div class="card-container">
+        <div class="card text-center">
+            <h4>Total Complaints</h4>
+            <p class="fs-4 fw-bold text-primary">{{ total_complaints }}</p>
+        </div>
+        <div class="card text-center">
+            <h4>Pending Complaints</h4>
+            <p class="fs-4 fw-bold text-warning">{{ pending_complaints }}</p>
+        </div>
+        <div class="card text-center">
+            <h4>Resolved Complaints</h4>
+            <p class="fs-4 fw-bold text-success">{{ resolved_complaints }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

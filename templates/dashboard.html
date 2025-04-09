@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            color: #333;
+        }
+
+        .container {
+            padding: 50px;
+            max-width: 900px;
+            margin: auto;
+            background: #ffffffdd;
+            border-radius: 12px;
+            margin-top: 60px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 576px) {
+            .nav-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        .nav-buttons i {
+            font-size: 18px;
+        }
+
+        .logout {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .logout a {
+            color: #dc3545;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logout a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2><i class="fas fa-user-circle"></i> Welcome, {{ name }}!</h2>
+
+    <div class="nav-buttons">
+        <a href="/submit-complaint"><i class="fas fa-plus-circle"></i> Raise a Complaint</a>
+        <a href="/my-complaints"><i class="fas fa-list-alt"></i> My Complaints</a>
+    </div>
+
+    <div class="logout">
+        <p><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></p>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
