@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import psycopg2
 import os
+import socket
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this in production
@@ -29,6 +30,14 @@ def get_db_connection():
     except Exception as e:
         print(f"Database connection failed: {e}")
         raise
+
+@app.route('/pingdb')
+def pingdb():
+    try:
+        ip = socket.gethostbyname(os.environ['DB_HOST'])
+        return f"DB host resolved to: {ip}"
+    except Exception as e:
+        return f"DNS resolution failed: {e}"
 
 
 @app.route('/')
