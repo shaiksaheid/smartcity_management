@@ -16,14 +16,20 @@ DB_PASS = 'YtEz5JKRBBDVwlebCbVnV2PHXJ3lBWGj'
 # File upload config
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
+
 def get_db_connection():
-    return psycopg2.connect(
-        host=os.environ['DB_HOST'],
-        dbname=os.environ['DB_NAME'],
-        user=os.environ['DB_USER'],
-        password=os.environ['DB_PASSWORD'],
-        port=os.environ.get('DB_PORT', 5432)
-    )
+    try:
+        return psycopg2.connect(
+            host=os.environ['DB_HOST'],
+            dbname=os.environ['DB_NAME'],
+            user=os.environ['DB_USER'],
+            password=os.environ['DB_PASSWORD'],
+            port=os.environ.get('DB_PORT', 5432)
+        )
+    except Exception as e:
+        print(f"Database connection failed: {e}")
+        raise
+
 
 @app.route('/')
 def home():
