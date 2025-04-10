@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this in production
 
 # PostgreSQL Config
-DB_HOST = 'dpg-cvrlc021i9vc739hvj00-a'
+DB_HOST = 'dpg-cvrlc021i9vc739hvj00-a.postgresql.render.com'
 DB_NAME = 'smartcity_db'
 DB_USER = 'smartcity_db_user'
 DB_PASS = 'YtEz5JKRBBDVwlebCbVnV2PHXJ3lBWGj'
