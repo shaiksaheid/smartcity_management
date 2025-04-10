@@ -18,10 +18,11 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 def get_db_connection():
     return psycopg2.connect(
-        host=DB_HOST,
-        database=DB_NAME,
-        user=DB_USER,
-        password=DB_PASS
+        host=os.environ['DB_HOST'],
+        dbname=os.environ['DB_NAME'],
+        user=os.environ['DB_USER'],
+        password=os.environ['DB_PASSWORD'],
+        port=os.environ.get('DB_PORT', 5432)
     )
 
 @app.route('/')
