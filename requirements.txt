@@ -1,3 +1,4 @@
 Flask
 flask-mysqldb
 gunicorn
+psycopg2-binary
